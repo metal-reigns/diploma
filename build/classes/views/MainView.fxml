@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorePaneMain" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+    <children>
+        <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                      <MenuBar prefHeight="25.0" prefWidth="758.0" styleClass="root">
+                          <menus>
+                              <Menu mnemonicParsing="false" style=".menu-item .label{-fx-text-fill: greenyellow;" text="Файл">
+                                  <items>
+                                      <MenuItem fx:id="menuItemExit" mnemonicParsing="false" text="Выход" />
+                                  </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Правка">
+                                  <items>
+                                      <MenuItem fx:id="menuItemCopy" mnemonicParsing="false" text="Копировать" />
+                                  </items>
+                              </Menu>
+      
+                              <Menu mnemonicParsing="false" text="Заменить">
+                                  <items>
+                                      <MenuItem fx:id="menuItemReplaceElement" mnemonicParsing="false" text="Обозначение" />
+                                      <MenuItem fx:id="menuItemReplaceMaterial" disable="true" mnemonicParsing="false" text="Материал" />
+                                      <MenuItem fx:id="menuItemReplaceCommon" disable="true" mnemonicParsing="false" text="Вспомогательный" />
+                                      <MenuItem fx:id="menuItemReplaceFormula" disable="true" mnemonicParsing="false" text="Формулу" />
+                                  </items>
+                              </Menu>
+                        <Menu mnemonicParsing="false" text="Отчеты">
+                          <items>
+                                      <MenuItem fx:id="menuItemSaveMaterials" mnemonicParsing="false" text="Норма расхода материалов" />
+                              <MenuItem fx:id="menuItemSaveMaterialsFull" mnemonicParsing="false" text="Норма расхода материалов полная" />
+                              <MenuItem fx:id="menuItemSaveCut" mnemonicParsing="false" text="Раскрой материалов" />
+                                      <MenuItem fx:id="menuItemSaveCheck" mnemonicParsing="false" text="Проверка НРМ" />
+                                      <MenuItem fx:id="menuItemSaveGraph" mnemonicParsing="false" text="График" />
+                                      <MenuItem fx:id="menuItemSaveTree" mnemonicParsing="false" text="Дерево" />
+                              <MenuItem fx:id="menuItemCooperation" mnemonicParsing="false" text="Кооперация" />
+                              <MenuItem fx:id="menuItemCooperationMidi" mnemonicParsing="false" text="Кооперация Мидивисана" />
+                              <MenuItem fx:id="menuItemCommon" mnemonicParsing="false" text="Входимость вспомогательных" />
+                              <MenuItem fx:id="menuItemColoring" mnemonicParsing="false" text="Расчет окраски" />
+                          </items>
+                        </Menu>
+                              <Menu mnemonicParsing="false" text="Справка">
+                                  <items>
+                                      <MenuItem mnemonicParsing="false" text="About" />
+                                  </items>
+                              </Menu>
+                          </menus>
+                      </MenuBar>
+                  <JFXCheckBox fx:id="checkBoxWriten" alignment="CENTER" checkedColor="#95dee3" contentDisplay="CENTER" minHeight="25.0" text="Выписано" unCheckedColor="WHITE" GridPane.columnIndex="1" />
+                  <JFXComboBox fx:id="comboboxOrder" editable="true" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Заказ" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXComboBox>
+               </children>
+            </GridPane>
+                <SplitPane dividerPositions="0.5" prefWidth="1000.0" styleClass="root" VBox.vgrow="ALWAYS">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="100.0">
+                            <children>
+                                <TabPane fx:id="tabPaneLeft" layoutX="1.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="Спецификация">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="30.0" prefWidth="30.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXComboBox fx:id="comboboxElement" editable="true" maxWidth="1.7976931348623157E308" promptText="Введите обозначение по чертежу" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.halignment="LEFT" />
+                                                                        <JFXButton fx:id="buttonFinde" alignment="CENTER" buttonType="FLAT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="30.0" ripplerFill="RED" style="-fx-background-color: #95DEE3;" GridPane.columnIndex="1">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="16" stroke="BLACK" />
+                                                         </graphic></JFXButton>
+                                                                    </children>
+                                                                </GridPane>
+                                                                <AnchorPane />
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXButton fx:id="buttonHomeSpecification" alignment="CENTER" ripplerFill="#f81717" style="-fx-background-color: #95DEE3;">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="16" stroke="BLACK" />
+                                                         </graphic></JFXButton>
+                                                                        <Label fx:id="labelParent" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" />
+                                                                        <JFXButton fx:id="buttonLeft" alignment="CENTER" buttonType="FLAT" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" GridPane.columnIndex="3">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="16" stroke="BLACK" />
+                                                         </graphic></JFXButton>
+                                                                        <JFXComboBox fx:id="comboboxElementParents" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="4" />
+                                                                        <JFXButton fx:id="buttonRight" alignment="CENTER" buttonType="FLAT" contentDisplay="RIGHT" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" GridPane.columnIndex="5">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_RIGHT" size="16" stroke="BLACK" />
+                                                         </graphic></JFXButton>
+                                                                        <JFXButton fx:id="buttonUpdate" buttonType="FLAT" mnemonicParsing="false" ripplerFill="#f81717" style="-fx-background-color: #95DEE3;" GridPane.columnIndex="1">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" size="16" stroke="BLACK" />
+                                                         </graphic></JFXButton>
+                                                                    </children>
+                                                                </GridPane>
+                                                                <BorderPane>
+                                                                    <center>
+                                                                        <BorderPane BorderPane.alignment="CENTER" />
+                                                                    </center>
+                                                                </BorderPane>
+                                                                <TableView fx:id="tableViewSpecification" pickOnBounds="false" prefHeight="574.0" prefWidth="569.0" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnPosition" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" resizable="false" sortable="false" text="Поз" />
+                                                                        <TableColumn fx:id="tableColumnElement" prefWidth="75.0" sortable="false" text="Обозначение" />
+                                                                        <TableColumn fx:id="tableColumnName" prefWidth="75.0" sortable="false" text="Наименование" />
+                                                                        <TableColumn fx:id="tableColumnDescription" prefWidth="215.0" sortable="false" text="Примечание" />
+                                                                        <TableColumn fx:id="tableColumnCount" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" resizable="false" sortable="false" text="Кол" />
+                                                      <TableColumn fx:id="tableColumnWritten" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" resizable="false" sortable="false" text="Выписано" visible="false" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        
+                                        <Tab text="Дерево">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                    <children>
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <AnchorPane />
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXButton fx:id="buttonFindeTree" buttonType="FLAT" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Найти" GridPane.columnIndex="1" />
+                                                                        <JFXComboBox fx:id="comboboxTree" editable="true" maxWidth="1.7976931348623157E308" promptText="Выберите обозначение по чертежу" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.halignment="LEFT" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXCheckBox fx:id="checkBoxAccelerate" checkedColor="#95DEE3" mnemonicParsing="false" selected="true" text="Ускорить" unCheckedColor="WHITE" GridPane.columnIndex="1" />
+                                                                        <JFXCheckBox fx:id="checkBoxNodes" checkedColor="#95DEE3" mnemonicParsing="false" text="Узлы" unCheckedColor="WHITE" GridPane.columnIndex="2" />
+                                                      <JFXButton fx:id="buttonHomeTree" alignment="CENTER" ripplerFill="#f81717" style="-fx-background-color: #95DEE3;">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="16" stroke="BLACK" />
+                                                         </graphic>
+                                                      </JFXButton>
+                                                                    </children>
+                                                                </GridPane>
+                                                                <TreeView fx:id="treeView" styleClass="treeView" VBox.vgrow="ALWAYS" />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab fx:id="tabSchedule" onSelectionChanged="#tabScheduleOnSelectionChanged" text="График">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                  <JFXComboBox fx:id="comboboxSchedule" editable="false" maxWidth="1.7976931348623157E308" minWidth="-Infinity" promptText="Выберите заказ" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                <TreeTableView fx:id="treeTableView" onMouseReleased="#treeTableViewOnMouseReleased" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TreeTableColumn fx:id="treeTableColumnElement" minWidth="200.0" prefWidth="300.0" text="Обозначение" />
+                                                      <TreeTableColumn fx:id="treeTableColumnResponsible" maxWidth="80.0" minWidth="80.0" text="Ответственный" />
+                                                                        <TreeTableColumn fx:id="treeTableColumnWritten" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Выписано" />
+                                                      <TreeTableColumn fx:id="treeTableColumnNote" minWidth="200.0" prefWidth="300.0" text="Примечание" />
+                                                      <TreeTableColumn fx:id="treeTableColumnHarvesting" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Заготовка" />
+                                                      <TreeTableColumn fx:id="treeTableColumnAssembly" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Сборка" />
+                                                      <TreeTableColumn fx:id="treeTableColumnPanels" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Панели" />
+                                                      <TreeTableColumn fx:id="treeTableColumnelEctricians" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Электрики" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TreeTableView>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Заказы">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="69.0" minWidth="69.0" prefWidth="69.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXButton fx:id="buttonUpdateOrders" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" GridPane.columnIndex="0">
+                                                         <graphic>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" size="16" stroke="BLACK" />
+                                                         </graphic></JFXButton>
+                                                                        <JFXTextField fx:id="textFieldOrder" promptText="Произ. номер и обозначение изделия по КД (ХХХ ЛУИФ.ХХХХ)" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" />
+                                                                        <JFXButton fx:id="buttonAddOrder" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Добавить" GridPane.columnIndex="2" />
+
+                                                                    </children>
+                                                             
+                                                                </GridPane>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXComboBox fx:id="comboboxTableElement" editable="true" maxWidth="1.7976931348623157E308" promptText="Выберите обозначение по чертежу (ЛУИФ.ХХХХ-00.00.000)" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="0" />
+                                                                        <JFXButton fx:id="buttonDeleteOrder" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="1" />
+                                                                    </children>
+                                                             
+                                                                </GridPane>
+                                                                <TableView fx:id="tableViewOrder" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnTableOrder" editable="false" prefWidth="75.0" sortable="false" text="Заказ" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Обозначения">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.0" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXButton fx:id="buttonFilterElements" alignment="CENTER" buttonType="FLAT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Фильтр" GridPane.columnIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldElementsFiltered" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <TableView fx:id="tableViewElements" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnElementKTDE" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" text="КТДЭ" />
+                                                                        <TableColumn fx:id="tableColumnElementElement" editable="false" prefWidth="75.0" sortable="false" text="Обозначение" />
+                                                                        <TableColumn fx:id="tableColumnElementName" editable="false" prefWidth="75.0" sortable="false" text="Наименование" />
+                                                                        <TableColumn fx:id="tableColumnElementDescription" editable="false" prefWidth="75.0" sortable="false" text="Примечание" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXTextField fx:id="textFieldTableElement" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                        <JFXTextField fx:id="textFieldTableName" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldTableDescription" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <BorderPane />
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <HBox alignment="BOTTOM_RIGHT" GridPane.columnIndex="1">
+                                                                            <children>
+                                                                                <JFXButton fx:id="buttonAddElement" alignment="BOTTOM_LEFT" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Добавить" GridPane.columnIndex="1" />
+                                                                                <JFXButton fx:id="buttonChangeElement" alignment="CENTER" buttonType="FLAT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Изменить" GridPane.columnIndex="1" />
+                                                                                <JFXButton fx:id="buttonDeleteElement" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="1" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <JFXTextField fx:id="textFieldTableKTD" alignment="TOP_LEFT" maxWidth="80.0" minWidth="80.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <BorderPane>
+                                                                    <center>
+                                                                        <HBox alignment="CENTER" BorderPane.alignment="CENTER" />
+                                                                    </center>
+                                                                </BorderPane>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Вспомогательные">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="377.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.0" minWidth="10.0" prefWidth="118.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXTextField fx:id="textFieldCommonMaterial" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                        <JFXButton fx:id="buttonFilterCommon" alignment="CENTER" buttonType="FLAT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Фильтр" GridPane.columnIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <TableView fx:id="tableViewCommonMaterials" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnCommonKTDV" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" text="КТДВ" />
+                                                                        <TableColumn fx:id="tableColumnCommonCommon" editable="false" prefWidth="75.0" sortable="false" text=" Вспомогательный" />
+                                                                        <TableColumn fx:id="tableColumnCommonUnit" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" text="ЕИВ" />
+                                                                        <TableColumn fx:id="tableColumnCommonFormula" editable="false" prefWidth="75.0" sortable="false" text="Формула" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" prefWidth="80.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXComboBox fx:id="comboboxTableCommon" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                        <JFXTextField fx:id="textFieldTableCommonUnit" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" />
+                                                                        <JFXComboBox fx:id="comboboxTableCommonFormula" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <HBox alignment="BOTTOM_RIGHT" GridPane.columnIndex="1">
+                                                                            <children>
+                                                                                <JFXButton fx:id="buttonAddCommon" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Добавить" GridPane.columnIndex="1" />
+                                                                                <JFXButton fx:id="buttonChangeCommon" alignment="CENTER_RIGHT" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Изменить" GridPane.columnIndex="2" />
+                                                                                <JFXButton fx:id="buttonDeleteCommon" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="3" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <JFXTextField fx:id="textFieldTableCommonKTDV" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Формулы">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <TableView fx:id="tableViewFormulas" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnFormulaName" editable="false" prefWidth="75.0" sortable="false" text="Формула" />
+                                                                        <TableColumn fx:id="tableColumnFormulaFormula" prefWidth="75.0" text="ФормулаРасчета" />
+                                                                        <TableColumn fx:id="tableColumnFormulaA" editable="false" prefWidth="75.0" sortable="false" text="а" />
+                                                                        <TableColumn fx:id="tableColumnFormulaB" editable="false" prefWidth="75.0" sortable="false" text="б" />
+                                                                        <TableColumn fx:id="tableColumnFormulaC" editable="false" prefWidth="75.0" sortable="false" text="в" />
+                                                                        <TableColumn fx:id="tableColumnFormulaD" editable="false" prefWidth="75.0" sortable="false" text="г" />
+                                                                        <TableColumn fx:id="tableColumnFormulaE" editable="false" prefWidth="75.0" sortable="false" text="д" />
+                                                                        <TableColumn fx:id="tableColumnFormulaF" prefWidth="75.0" text="е" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXTextField fx:id="textFieldFormula" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                        <JFXTextField fx:id="textFieldCalculation" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.rowIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldA" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldD" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldB" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" />
+                                                                        <JFXTextField fx:id="textFieldE" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldC" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="3" />
+                                                                        <JFXTextField fx:id="textFieldF" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <HBox alignment="BOTTOM_RIGHT">
+                                                                    <children>
+                                                                        <JFXButton fx:id="buttonAddFormula" alignment="CENTER" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Добавить" />
+                                                                        <JFXButton fx:id="buttonFormulaUpdate" alignment="CENTER" buttonType="FLAT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Обновить" GridPane.columnIndex="1" />
+                                                                        <JFXButton fx:id="buttonFormulaChange" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Изменить" GridPane.columnIndex="2" />
+                                                                        <JFXButton fx:id="buttonFormulaDelete" alignment="CENTER" buttonType="FLAT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="3" />
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Поиск">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXComboBox fx:id="comboboxSearchElement" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.halignment="LEFT" />
+                                                                        <JFXButton fx:id="buttonSearchElement" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Найти" GridPane.columnIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <TableView fx:id="tableViewSearch" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnTableSearch" editable="false" prefWidth="75.0" sortable="false" text="Обозначение" />
+                                                                        <TableColumn fx:id="tableColumnTableSearchCount" editable="false" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" sortable="false" text="Кол" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Материалы">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.0" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXButton fx:id="buttonFilterMaterial" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Фильтр" GridPane.columnIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldMaterial" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <TableView fx:id="tableViewMaterials" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnMaterialKTDM" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" text="КТДМ" />
+                                                                        <TableColumn fx:id="tableColumnMaterialMaterial" editable="false" prefWidth="75.0" sortable="false" text="Материал" />
+                                                                        <TableColumn fx:id="tableColumnMaterialUnit" editable="false" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" sortable="false" text="ЕИМ" />
+                                                                        <TableColumn fx:id="tableColumnMaterialFormula" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Формула" />
+                                                      <TableColumn fx:id="tableColumnMaterialCoefficient" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Коэффициент" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXComboBox fx:id="comboboxTableMateral" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.halignment="LEFT" />
+                                                                        <JFXComboBox fx:id="comboboxTableMaterialFormulа" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+                                                                        <JFXTextField fx:id="textFieldTableMaterialUnit" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                                                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="160.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <HBox alignment="BOTTOM_RIGHT" GridPane.columnIndex="2">
+                                                                            <children>
+                                                                                <JFXButton fx:id="buttonAddMaterial" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Добавить" GridPane.columnIndex="1" />
+                                                                                <JFXButton fx:id="buttonChangeMaterial" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Изменить" GridPane.columnIndex="1" />
+                                                                                <JFXButton fx:id="buttonDeleteMaterial" buttonType="FLAT" mnemonicParsing="false" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="1" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <JFXTextField fx:id="textFieldTableMaterialKTDM" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                      <JFXTextField fx:id="textFieldTableMaterialCofficient" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" GridPane.columnIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+
+                                    </tabs>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <padding>
+                                        <Insets right="1.0" />
+                                    </padding>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="100.0">
+                            <children>
+                                <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="Обозначение">
+                                            <content>
+                                                <AnchorPane fx:id="anchorPaneElement">
+                                                    <children>
+                                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="-Infinity" prefWidth="50.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXTextField fx:id="textFieldPosition" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.rowIndex="1" />
+                                                                        <Label text="Поз" />
+                                                                        <Label text="Обозначение" GridPane.columnIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldElement" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <Label text="Кол" GridPane.columnIndex="2" />
+                                                                        <JFXTextField fx:id="textFieldCount" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label text="ЕИ" GridPane.columnIndex="3" />
+                                                                        <JFXTextField fx:id="textFieldUnit" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <Label text="Наименование" />
+                                                                        <JFXTextField fx:id="textFieldName" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.rowIndex="1" />
+                                                                        <JFXTextField fx:id="textFieldKTD" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                                        <Label text="КТД" GridPane.columnIndex="2" />
+                                                                        <JFXTextField fx:id="textFieldDescription" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <Label text="Примечание" GridPane.columnIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <JFXCheckBox fx:id="checkBoxNode" alignment="CENTER" checkedColor="#95DEE3" mnemonicParsing="false" text="Узел" unCheckedColor="WHITE" />
+                                                                        <JFXButton fx:id="buttonAddElementRow" buttonType="FLAT" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Добавить" GridPane.columnIndex="1" />
+                                                                        <JFXButton fx:id="buttonDeleteElementRow" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="2" />
+                                                                    </children>
+                                                                </GridPane>
+                                                <GridPane>
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                                    <JFXComboBox fx:id="comboboxGuild" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </JFXComboBox>
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane VBox.vgrow="ALWAYS">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <JFXTextField fx:id="textFieldTimer" alignment="CENTER" maxHeight="20.0" maxWidth="80.0" />
+                                                   </children>
+                                                </GridPane>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Материал">
+                                            <content>
+                                                <AnchorPane fx:id="anchorPanneMaterial">
+                                                    <children>
+                                                        <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <JFXComboBox fx:id="comboboxMaterial" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE">
+                                                   <contextMenu>
+                                                      <ContextMenu fx:id="contextMenu">
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu></JFXComboBox>
+                                                                <JFXComboBox fx:id="comboboxGuildMaterial" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                <HBox prefHeight="180.0" prefWidth="200.0">
+                                                                    <children>
+                                                                        <TableView fx:id="tableViewMaterialValues" editable="true" maxWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                            <placeholder>
+                                                                                <Label text="" />
+                                                                            </placeholder>
+                                                                            <columns>
+                                                                                <TableColumn fx:id="tableColumnMaterialParameter" prefWidth="75.0" sortable="false" text="Параметр" />
+                                                                                <TableColumn fx:id="tableColumnMaterialValue" prefWidth="75.0" sortable="false" text="Значение" />
+                                                                            </columns>
+                                                                            <columnResizePolicy>
+                                                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                            </columnResizePolicy>
+                                                                        </TableView>
+                                                                        <GridPane alignment="CENTER" HBox.hgrow="ALWAYS">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label fx:id="labelMaterialFormula" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Формула" GridPane.rowIndex="1" />
+                                                                                <JFXTextField fx:id="textFieldKTDM" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                                <GridPane GridPane.rowIndex="2">
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+                                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <Label fx:id="labelMaterialResult" text="НРМ" GridPane.columnIndex="1" />
+                                                                                        <Label fx:id="labelMaterialUnit" text="ЕИ" GridPane.columnIndex="2" />
+                                                                                    </children>
+                                                                                </GridPane>
+                                                                                <GridPane GridPane.rowIndex="3">
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints minHeight="10.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                            <children>
+                                                                                                <JFXTextField fx:id="textFieldСoefficientM" maxWidth="100.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                                                <JFXTextField fx:id="textFieldСoefficientE" maxWidth="100.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                                            </children>
+                                                                                        </HBox>
+                                                                                    </children>
+                                                                                </GridPane>
+                                                                            </children>
+                                                                        </GridPane>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Вспомогательные">
+                                            <content>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <TableView fx:id="tableViewCommonMaterial" VBox.vgrow="ALWAYS">
+                                                                    <placeholder>
+                                                                        <Label text="" />
+                                                                    </placeholder>
+                                                                    <columns>
+                                                                        <TableColumn fx:id="tableColumnCommon" editable="false" prefWidth="75.0" sortable="false" text="Вспомогательный" />
+                                                                        <TableColumn fx:id="tableColumnCommonResult" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" text="НРМ" />
+                                                                        <TableColumn fx:id="tableColumnUnit" editable="false" maxWidth="80.0" minWidth="80.0" sortable="false" text="ЕИВ" />
+                                                                        <TableColumn fx:id="tableColumnCommonGuild" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Цех" />
+                                                                    </columns>
+                                                                    <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                    </columnResizePolicy>
+                                                                </TableView>
+                                                                <JFXComboBox fx:id="comboboxCommonMaterial" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                <JFXComboBox fx:id="comboboxGuildCommonMaterial" editable="true" maxWidth="1.7976931348623157E308" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                <GridPane alignment="BOTTOM_CENTER" maxHeight="180.0" prefHeight="200.0">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <GridPane GridPane.columnIndex="1">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <GridPane>
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <JFXButton fx:id="buttonAddCommonRow" buttonType="FLAT" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Добавить" GridPane.columnIndex="3" />
+                                                                                        <JFXButton fx:id="buttonDeleteCommonRow" buttonType="FLAT" mnemonicParsing="false" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Удалить" GridPane.columnIndex="4" />
+                                                                                        <JFXTextField fx:id="textFieldKTDC" maxWidth="80.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                  <JFXButton fx:id="buttonPanel" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Панель" GridPane.columnIndex="2" />
+                                                                  <JFXButton fx:id="buttonBar" ripplerFill="RED" style="-fx-background-color: #95DEE3;" text="Брус" GridPane.columnIndex="1" />
+                                                                                    </children>
+                                                                                </GridPane>
+                                                                                <Label fx:id="labelCommonFormula" text="Формула" GridPane.rowIndex="1" />
+                                                                                <GridPane GridPane.rowIndex="2">
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <Label fx:id="labelCommonResult" text="НРМ" GridPane.columnIndex="1" />
+                                                                                        <Label fx:id="labelCommonUnit" text="ЕИ" GridPane.columnIndex="2" />
+                                                                                    </children>
+                                                                                </GridPane>
+                                                                                <GridPane GridPane.rowIndex="4">
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints minHeight="10.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                            <children>
+                                                                                                <JFXTextField fx:id="textFieldСoefficientC" maxWidth="100.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" unFocusColor="WHITE" />
+                                                                                                <JFXTextField fx:id="textFieldСoefficientCE" maxWidth="100.0" style="-fx-background-color: white; -fx-border-color: #95DEE3;" />
+                                                                                            </children>
+                                                                                        </HBox>
+                                                                                    </children>
+                                                                                </GridPane>
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <TableView fx:id="tableViewCommonValues" editable="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                                            <placeholder>
+                                                                                <Label text="" />
+                                                                            </placeholder>
+                                                                            <columns>
+                                                                                <TableColumn fx:id="tableColumnCommonParameter" editable="false" maxWidth="-1.0" minWidth="90.0" prefWidth="-1.0" sortable="false" text="Параметр" />
+                                                                                <TableColumn fx:id="tableColumnCommonValue" maxWidth="-1.0" minWidth="90.0" prefWidth="-1.0" sortable="false" text="Значение" />
+                                                                            </columns>
+                                                                            <columnResizePolicy>
+                                                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                            </columnResizePolicy>
+                                                                        </TableView>
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                    <padding>
+                                        <Insets left="1.0" />
+                                    </padding>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

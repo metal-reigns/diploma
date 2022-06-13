@@ -1,0 +1,21 @@
+/*.tree-cell:hover {
+    -fx-background-color: #ce084a ;
+}
+.tree-lable:hover
+{
+    -fx-background-color: #6600664a ;
+}
+.text-field * .context-menu { 
+    visibility: hidden;
+    
+}*/
+table-row-cell:odd
+{
+    -fx-background-color:aquamarine;
+    -fx-background-inserts: 0, 0 0 1 0;
+}
+table-row-cell:even
+{
+    -fx-background-color:bisque;
+    -fx-background-inserts: 0, 0 0 1 0;
+}

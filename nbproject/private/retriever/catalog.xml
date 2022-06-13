@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://javafx.com/javafx/8" uri="www.oracle.com/technetwork/java/javase/overview/index.html"/>
+    <system systemId="http://javafx.com/javafx/11.0.1" uri="kerio.midiproduction.local_4080/nonauth/deny.php.dest_ahr0cdovl2phdmfmec5jb20vamf2ywz4lzexljaumq___id_mjegnw___user_mdk2zdljmzytnjq2ms00ndayltgznjgtotc4mgyzywy3mjzj_cookie_rg1ps296a3bvqja9"/>
+</catalog>
